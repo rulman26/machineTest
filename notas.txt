@@ -1,0 +1,70 @@
+rulman26
+
+pip freeze > requirements.txt
+
+#ver variable de entorno
+printenv
+
+crear variable de entorno
+MI_WEB="galisteocantero.com"
+echo $MI_WEB
+export
+
+docker build -t flaskuser .
+#muestra el consola
+docker run -it --p 7000:5000 flaskuser
+#No muesta la consola
+docker run -it --p 5000:5000 -d flaskuser
+#para ver los container corriendo
+docker container ls
+#para
+docker stop (idContainer)
+
+#referencia
+https://ubunlog.com/como-instalar-kubernetes-en-ubuntu-y-derivados-y-crear-dos-nodos/
+ahora para ver el kubernetes
+
+kubectl get pods --all-namespaces
+kubectl get pods
+sudo kubectl get nodes
+
+#aplicar y el archivo tiene q estar dentro mi directorio flask
+sudo kubectl apply -f k8s/pod.yaml
+
+#eliminar
+kubectl delete pod api-hello-pod
+
+
+#Net Core
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+
+$ dotnet new mvc
+This will generate all the files I need to get started;
+In the terminal (inside my project directory)
+$ dotnet build
+$ dotnet run
+
+
+$dotnet clean because I don’t trust it.
+$ dotnet build
+$dotnet run
+
+#para agregar sql 
+dotnet add package System.Data.SqlClient
+
+#Eliminar un puerto
+#busca
+lsof -t -i:8080
+kill -9 $(lsof -t -i:8080)
+
+pip install -r requirements.txt
+
+docker file service
+#Dockerfile
+FROM alpine:3.10
+RUN apk add --no-cache python3-dev && pip3 install --upgrade pip
+WORKDIR /app
+COPY . /app
+RUN pip3 --no-cache-dir install -r requirements.txt
+CMD ["python3","main.py"]
